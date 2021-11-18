@@ -23,6 +23,7 @@ from domainbed.lib.misc import (
 
 ALGORITHMS = [
     'ERM',
+    'AdaClust',
     'Fish',
     'IRM',
     'GroupDRO',
@@ -112,6 +113,38 @@ class ERM(Algorithm):
 
     def predict(self, x):
         return self.network(x)
+
+
+class AdaClust(ERM):
+    def __init__(self, input_shape, num_classes, num_domains, hparams):
+        super(AdaClust, self).__init__(input_shape, num_classes, num_domains, hparams)
+        self.featurizer = networks.Featurizer(input_shape, self.hparams)
+        self.classifier = networks.Classifier(
+            self.featurizer.n_outputs * 2, num_classes, self.hparams["nonlinear_classifier"]
+        )
+        self.params = list(self.featurizer.parameters()) + list(self.classifier.parameters())
+        self.optimizer = torch.optim.Adam(
+            self.params, lr=self.hparams["lr"], weight_decay=self.hparams["weight_decay"]
+        )
+
+    def update(self, minibatches, device=None):
+        all_x = torch.cat([x for x, clust, y in minibatches])
+        all_y = torch.cat([y for x, clust, y in minibatches])
+        all_clust = torch.cat([clust for x, clust, y in minibatches])
+        loss = F.cross_entropy(self.predict(all_x, all_clust, device), all_y)
+        self.optimizer.zero_grad()
+        loss.backward()
+        self.optimizer.step()
+        if hasattr(self, 'scheduler'):
+            self.scheduler.step()
+
+        return {"loss": loss.item()}
+
+    def predict(self, x, clust, device):
+        out = self.featurizer(x)
+        out = torch.cat([out, clust], dim=1)
+        out = self.classifier(out)
+        return out
 
 
 class Fish(Algorithm):

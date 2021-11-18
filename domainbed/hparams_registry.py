@@ -48,6 +48,12 @@ def _hparams(algorithm, dataset, random_seed):
         _hparam('mlp_depth', 3, lambda r: int(r.choice([3, 4, 5])))
         _hparam('mlp_dropout', 0., lambda r: r.choice([0., 0.1, 0.5]))
 
+    elif algorithm == "AdaClust":
+        hparams['num_clusters'] = (5, lambda r: int(r.choice([1, 3, 5])))
+        hparams['pca_dim'] = (512, lambda r: 512)
+        hparams['offset'] = (8,  lambda r: int(r.choice([8, 64, 512])))
+        hparams['clust_epoch'] = (0 , lambda r: 0)
+
     elif algorithm == 'Fish':
         _hparam('meta_lr', 0.5, lambda r:r.choice([0.05, 0.1, 0.5]))
 
