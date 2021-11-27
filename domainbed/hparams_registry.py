@@ -34,6 +34,7 @@ def _hparams(algorithm, dataset, random_seed):
     # TODO: nonlinear classifiers disabled
     _hparam('nonlinear_classifier', False,
             lambda r: bool(r.choice([False, False])))
+    _hparam('freeze_bn', True, lambda r: True)
 
     # Algorithm-specific hparam definitions. Each block of code below
     # corresponds to exactly one algorithm.

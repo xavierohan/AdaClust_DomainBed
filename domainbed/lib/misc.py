@@ -178,7 +178,7 @@ def accuracy(network, loader, weights, device, test_centroids=None):
                 clust = clust.to(device)
                 x = x.to(device)
                 y = y.to(device)
-                p = network.predict(x, clust, device)
+                p = network.predict(x, clust)
                 if weights is None:
                     batch_weights = torch.ones(len(x))
                 else:
@@ -244,3 +244,19 @@ class ParamDict(OrderedDict):
 
     def __truediv__(self, other):
         return self._prototype(other, operator.truediv)
+        
+def to_row(row, colwidth=10, latex=False):
+    """Convert value list to row string"""
+    if latex:
+        sep = " & "
+        end_ = "\\\\"
+    else:
+        sep = "  "
+        end_ = ""
+
+    def format_val(x):
+        if np.issubdtype(type(x), np.floating):
+            x = "{:.6f}".format(x)
+        return str(x).ljust(colwidth)[:colwidth]
+
+    return sep.join([format_val(x) for x in row]) + " " + end_
