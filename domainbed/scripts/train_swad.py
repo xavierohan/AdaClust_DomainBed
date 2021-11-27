@@ -71,7 +71,6 @@ if __name__ == "__main__":
         help="[fast, all]. if fast, ignore train_in datasets in evaluation time.",
     )
     parser.add_argument("--prebuild_loader", action="store_true", help="Pre-build eval loaders")
-
     parser.add_argument('--sched', action='store_false', help='Use learning rate scheduler')
     parser.add_argument('--no_pca', action='store_true', help='Clustering without SVD + Truncation step')
     parser.add_argument('--clust_step', type=int, default=None, help='step to perform clustering')
@@ -217,7 +216,7 @@ if __name__ == "__main__":
         for idx in test_idx_split
     ]
 
-    eval_weights = [None for i in range(8)]
+    eval_weights = [None for i in range(len(test_data_sep))]
     eval_meta = list(zip(eval_loader_names, eval_loaders, eval_weights))
 
     algorithm_class = algorithms.get_algorithm_class(args.algorithm)
