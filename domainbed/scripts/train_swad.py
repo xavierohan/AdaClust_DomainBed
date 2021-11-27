@@ -426,7 +426,7 @@ if __name__ == "__main__":
                     logger.info("SWAD valley is dead -> early stop !")
                     break
 
-                swad_algorithm = swa_utils.AveragedModel(algorithm, device='cuda:1')  # reset
+                swad_algorithm = swa_utils.AveragedModel(algorithm)  # reset
 
 
     # find best
@@ -455,7 +455,7 @@ if __name__ == "__main__":
 
     # Evaluate SWAD
     if swad:
-        swad_algorithm = swad.get_final_model().to("cuda:0")
+        swad_algorithm = swad.get_final_model()
         if hparams["freeze_bn"] is False:
             n_steps = 500 if not args.debug else 10
             logger.warning(f"Update SWAD BN statistics for {n_steps} steps ...")
