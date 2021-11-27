@@ -1,6 +1,4 @@
-# Welcome to DomainBed
-
-DomainBed is a PyTorch suite containing benchmark datasets and algorithms for domain generalization, as introduced in [In Search of Lost Domain Generalization](https://arxiv.org/abs/2007.01434).
+# Adaptive Methods for Aggregated Domain Generalization (AdaClust)
 
 ## AdaClust related hyperparameters
 
@@ -33,6 +31,18 @@ python3 -m domainbed.scripts.train\
        --dataset PACS\
        --test_env 3
 ```
+Similarly to run with SWAD:
+```sh
+python3 -m domainbed.scripts.train_swad\
+       --data_dir=./domainbed/data/\
+       --algorithm AdaClust\
+       --dataset PACS\
+       --test_env 3
+```
+
+Find the original code at:
+DomainBed: https://github.com/facebookresearch/DomainBed, 
+SWAD: https://github.com/khanrc/swad
 
 Launch a sweep:
 
