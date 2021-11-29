@@ -210,13 +210,16 @@ if __name__ == "__main__":
     eval_loaders = [
         FastDataLoader(
             dataset=torch.utils.data.Subset(test_data, idx),
-            batch_size=64,
+            batch_size=128,
             num_workers=8,
         )
         for idx in test_idx_split
     ]
 
+    evalloaders =  eval_loaders[::2] + eval_loaders[1::2] # SWAD requires eval loaders to be in the order in_splits + out_splits
     eval_weights = [None for i in range(len(test_data_sep))]
+    eval_loader_names = ["env{}_in".format(i) for i in range(len(dataset))]
+    eval_loader_names += ["env{}_out".format(i) for i in range(len(dataset))]
     eval_meta = list(zip(eval_loader_names, eval_loaders, eval_weights))
 
     algorithm_class = algorithms.get_algorithm_class(args.algorithm)

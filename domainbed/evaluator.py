@@ -102,14 +102,14 @@ class Evaluator:
         losses = {}
 
         # order: in_splits + out_splits.
-        for name, loader_kwargs, weights  in self.eval_meta:
+        for name, loader_kwargs, weights in self.eval_meta:
             # env\d_[in|out]
             env_name, inout = name.split("_")
             env_num = int(env_name[3:])
 
-            skip_eval = self.evalmode == "fast" and inout == "in" and env_num not in self.test_envs
-            if skip_eval:
-                continue
+            # skip_eval = self.evalmode == "fast" and inout == "in" and env_num not in self.test_envs
+            # if skip_eval:
+            #     continue
 
             is_test = env_num in self.test_envs
             acc, loss = accuracy(algorithm, loader_kwargs, weights, centroids, debug=self.debug)

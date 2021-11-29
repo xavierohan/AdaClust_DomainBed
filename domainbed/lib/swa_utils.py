@@ -34,21 +34,11 @@ class AveragedModel(Module):
         self.avg_fn = avg_fn
 
     def forward(self, *args, **kwargs):
-        if clust:
-            out = self.module.featurizer(x)
-            out = torch.cat([out, clust], dim=1)
-            out = self.module.classifier(out)
-        else:
-            #  return self.predict(*args, **kwargs)
-            return self.module(*args, **kwargs)
+        #  return self.predict(*args, **kwargs)
+        return self.module(*args, **kwargs)
 
     def predict(self, *args, **kwargs):
-        if clust:
-            out = self.module.featurizer(x)
-            out = torch.cat([out, clust], dim=1)
-            out = self.module.classifier(out)
-        else:
-            return self.module(*args, **kwargs)
+        return self.module(*args, **kwargs)
 
     @property
     def network(self):
