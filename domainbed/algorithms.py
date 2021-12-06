@@ -122,6 +122,7 @@ class AdaClust(Algorithm):
         self.classifier = networks.Classifier(
             self.featurizer.n_outputs * 2, num_classes, self.hparams["nonlinear_classifier"]
         )
+        self.network = nn.Sequential(self.featurizer, self.classifier)
         self.params = list(self.featurizer.parameters()) + list(self.classifier.parameters())
         self.optimizer = torch.optim.Adam(
             self.params, lr=self.hparams["lr"], weight_decay=self.hparams["weight_decay"]

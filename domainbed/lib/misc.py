@@ -12,6 +12,7 @@ from shutil import copyfile
 from collections import OrderedDict, defaultdict
 from numbers import Number
 import operator
+from datetime import datetime
 
 import numpy as np
 import torch
@@ -260,3 +261,8 @@ def to_row(row, colwidth=10, latex=False):
         return str(x).ljust(colwidth)[:colwidth]
 
     return sep.join([format_val(x) for x in row]) + " " + end_
+
+
+def timestamp(fmt="%y%m%d_%H-%M-%S"):
+    return datetime.now().strftime(fmt)
+    

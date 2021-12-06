@@ -31,18 +31,14 @@ python3 -m domainbed.scripts.train\
        --dataset PACS\
        --test_env 3
 ```
-Similarly to run with SWAD:
-```sh
-python3 -m domainbed.scripts.train_swad\
-       --data_dir=./domainbed/data/\
-       --algorithm AdaClust\
-       --dataset PACS\
-       --test_env 3
-```
+More details at: https://github.com/facebookresearch/DomainBed
 
-Find the original code at:
-DomainBed: https://github.com/facebookresearch/DomainBed, 
-SWAD: https://github.com/khanrc/swad
+Run SWAD:
+```sh
+python3 train_all.py exp_name --dataset PACS --algorithm AdaClust --data_dir /my/datasets/path
+```
+More details at: https://github.com/khanrc/swad
+
 
 Launch a sweep:
 
