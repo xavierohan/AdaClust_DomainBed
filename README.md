@@ -1,6 +1,10 @@
 # Adaptive Methods for Aggregated Domain Generalization (AdaClust)
 
-## AdaClust related hyperparameters
+Official Pytorch Implementation of [Adaptive Methods for Aggregated Domain Generalization](https://arxiv.org/abs/2112.04766)
+
+Xavier Thomas, Dhruv Mahajan, Alex Pentland, Abhimanyu Dubey
+
+## AdaClust related hyperparameters 
 
 * num_clusters: Number of clusters
 
@@ -90,6 +94,19 @@ By default, this only runs tests which don't depend on a dataset directory. To r
 
 ```sh
 DATA_DIR=/my/datasets/path python -m unittest discover
+```
+
+## Citation
+
+```
+@misc{thomas2021adaptive,
+      title={Adaptive Methods for Aggregated Domain Generalization}, 
+      author={Xavier Thomas and Dhruv Mahajan and Alex Pentland and Abhimanyu Dubey},
+      year={2021},
+      eprint={2112.04766},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
 ```
 
 ## License
