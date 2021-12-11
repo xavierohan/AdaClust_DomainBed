@@ -4,6 +4,13 @@ Official Pytorch Implementation of [Adaptive Methods for Aggregated Domain Gener
 
 Xavier Thomas, Dhruv Mahajan, Alex Pentland, Abhimanyu Dubey
 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/adaptive-methods-for-aggregated-domain/domain-generalization-on-pacs-2)](https://paperswithcode.com/sota/domain-generalization-on-pacs-2?p=adaptive-methods-for-aggregated-domain) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/adaptive-methods-for-aggregated-domain/domain-generalization-on-vlcs)](https://paperswithcode.com/sota/domain-generalization-on-vlcs?p=adaptive-methods-for-aggregated-domain) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/adaptive-methods-for-aggregated-domain/domain-generalization-on-domainnet)](https://paperswithcode.com/sota/domain-generalization-on-domainnet?p=adaptive-methods-for-aggregated-domain) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/adaptive-methods-for-aggregated-domain/domain-generalization-on-terraincognita)](https://paperswithcode.com/sota/domain-generalization-on-terraincognita?p=adaptive-methods-for-aggregated-domain) 
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/adaptive-methods-for-aggregated-domain/domain-generalization-on-office-home)](https://paperswithcode.com/sota/domain-generalization-on-office-home?p=adaptive-methods-for-aggregated-domain)
+
+
 ## AdaClust related hyperparameters 
 
 * num_clusters: Number of clusters
